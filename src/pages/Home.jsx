@@ -59,7 +59,7 @@ const Home = () => {
   const features = [
     {
       icon: <Code className="h-6 w-6" />,
-      title: "React & Express",
+      title: "React & Python Fast API",
       description: "Modern tech stack for lightning-fast, scalable applications"
     },
     {
@@ -120,6 +120,7 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Link to="/products">
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-blue-500/25"
@@ -128,6 +129,7 @@ const Home = () => {
                 Start Your Project
                 <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
+              </Link>
               <Link to="/products">
                 <Button 
                   variant="outline" 

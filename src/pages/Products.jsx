@@ -165,7 +165,7 @@ const Products = () => {
 
   const technologies = [
     { name: "React", description: "Modern frontend framework" },
-    { name: "Express.js", description: "Fast backend server" },
+    { name: "Python", description: "Fast backend server" },
     { name: "MongoDB", description: "Flexible database" },
     { name: "Render", description: "Reliable deployment" }
   ];

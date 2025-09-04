@@ -11,8 +11,6 @@ import {
   MapPin, 
   Clock,
   Send,
-  Github,
-  Linkedin,
   Twitter,
   MessageSquare,
   User,
@@ -103,24 +101,9 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    {
-      icon: <Github className="h-6 w-6" />,
-      name: "GitHub",
-      url: "#",
-      description: "View our code"
-    },
-    {
-      icon: <Linkedin className="h-6 w-6" />,
-      name: "LinkedIn",
-      url: "#",
-      description: "Professional network"
-    },
-    {
-      icon: <Twitter className="h-6 w-6" />,
-      name: "Twitter",
-      url: "#",
-      description: "Latest updates"
-    }
+    
+    
+    
   ];
 
   const projectTypes = [
