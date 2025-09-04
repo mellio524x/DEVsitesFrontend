@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
-// 👇 Step 1: Make sure this path matches your new logo file (e.g., .jpg)
 import logo from "../assets/Fav.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // We no longer need the 'scrolled' state for the background color itself.
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      // You can keep this if you want other effects on scroll, like a shadow.
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
@@ -28,7 +25,6 @@ const Header = () => {
 
   return (
     <header
-      // 👇 Step 2: Set the solid background color here
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-900 shadow-lg`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +37,6 @@ const Header = () => {
               className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
             />
             <span
-              // 👇 Step 3: Ensure logo text is always light
               className={`text-xl lg:text-2xl font-bold text-white`}
             >
               DEVSITES404
@@ -54,7 +49,6 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                // 👇 Step 4: Ensure nav links are always light
                 className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 text-gray-300 hover:text-blue-400 ${
                   location.pathname === link.path ? "!text-blue-400" : ""
                 }`}
@@ -69,9 +63,11 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
+            <Link to="/products">
             <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
               Get Started
             </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -79,14 +75,12 @@ const Header = () => {
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 rounded-lg"
           >
-            {/* 👇 Step 5: Ensure mobile icon is always light */}
             <Menu className={`h-6 w-6 text-white`} />
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          // Adjusted mobile menu to match the dark theme
           <div className="md:hidden py-4 bg-slate-800 rounded-lg mt-2 shadow-lg">
             <nav className="flex flex-col space-y-2 px-4">
               {navLinks.map((link) => (

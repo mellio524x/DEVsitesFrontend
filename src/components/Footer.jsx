@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Github, Linkedin, Twitter } from "lucide-react";
-import logo from "../assets/Fav.png"; // Assuming your transparent logo is named Fav.png
+import { Mail, MapPin, Twitter } from "lucide-react";
+import logo from "../assets/Fav.png"; 
 
 const Footer = () => {
   return (
@@ -14,7 +14,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="DevSites404 Logo"
-                // 👇 UPDATED CLASSES HERE FOR MUCH BIGGER SIZE
+              
                 className="h-24 w-24 object-contain"
               />
               <span className="text-xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
@@ -66,7 +66,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-blue-400">Services</h3>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>• React Web Applications</li>
-              <li>• Python 3 Backend Development</li>
+              <li>• Python FastAPI Backend Development</li>
               <li>• Database Setup & Management</li>
               <li>• Domain Registration & Setup</li>
               <li>• Custom Website Development</li>
@@ -94,31 +94,7 @@ const Footer = () => {
         </div>
 
         {/* Social Media & Copyright */}
-        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex space-x-4 mb-4 md:mb-0">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
-            >
-              <Twitter className="h-5 w-5" />
-            </a>
-          </div>
-          <p className="text-gray-400 text-sm">
-            © 2025 DEVSITES404. All rights reserved. Built with React & FastAPI.
-          </p>
-        </div>
+        
       </div>
     </footer>
   );
