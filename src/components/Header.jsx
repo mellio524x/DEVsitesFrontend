@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
+// 👇 Step 1: Make sure this path matches your new logo file (e.g., .jpg)
+import logo from "../assets/Fav.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  // We no longer need the 'scrolled' state for the background color itself.
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
+      // You can keep this if you want other effects on scroll, like a shadow.
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
@@ -23,18 +27,23 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
-    }`}>
+    <header
+      // 👇 Step 2: Set the solid background color here
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-900 shadow-lg`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="relative">
-              <Code2 className="h-8 w-8 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-black rounded-full group-hover:scale-110 transition-transform duration-300"></div>
-            </div>
-            <span className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-black to-blue-600 bg-clip-text text-transparent">
+            <img
+              src={logo}
+              alt="DVS Logo"
+              className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-110"
+            />
+            <span
+              // 👇 Step 3: Ensure logo text is always light
+              className={`text-xl lg:text-2xl font-bold text-white`}
+            >
               DEVSITES404
             </span>
           </Link>
@@ -45,15 +54,14 @@ const Header = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 hover:text-blue-600 ${
-                  location.pathname === link.path
-                    ? "text-blue-600"
-                    : scrolled ? "text-gray-900" : "text-white"
+                // 👇 Step 4: Ensure nav links are always light
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 text-gray-300 hover:text-blue-400 ${
+                  location.pathname === link.path ? "!text-blue-400" : ""
                 }`}
               >
                 {link.label}
                 {location.pathname === link.path && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-400 rounded-full"></div>
                 )}
               </Link>
             ))}
@@ -69,29 +77,27 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg transition-colors duration-300 hover:bg-gray-100"
+            className="md:hidden p-2 rounded-lg"
           >
-            {isOpen ? (
-              <X className={`h-6 w-6 ${scrolled ? "text-gray-900" : "text-white"}`} />
-            ) : (
-              <Menu className={`h-6 w-6 ${scrolled ? "text-gray-900" : "text-white"}`} />
-            )}
+            {/* 👇 Step 5: Ensure mobile icon is always light */}
+            <Menu className={`h-6 w-6 text-white`} />
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 bg-white/95 backdrop-blur-md rounded-lg mt-2 shadow-lg">
+          // Adjusted mobile menu to match the dark theme
+          <div className="md:hidden py-4 bg-slate-800 rounded-lg mt-2 shadow-lg">
             <nav className="flex flex-col space-y-2 px-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-300 hover:text-blue-600 hover:bg-blue-50 rounded-md ${
+                  className={`px-3 py-2 text-sm font-medium rounded-md text-gray-200 hover:text-blue-400 hover:bg-slate-700 ${
                     location.pathname === link.path
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-gray-900"
+                      ? "text-blue-400 bg-slate-700"
+                      : ""
                   }`}
                 >
                   {link.label}
