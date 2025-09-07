@@ -264,7 +264,7 @@ const Home = () => {
               Ready to Build Something Amazing?
             </h2>
             <p className="text-xl text-gray-300 mb-8">
-              Join hundreds of satisfied clients who chose DEVSITES404 for their web development needs
+              Join DEVSITES404 for your web development needs
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
